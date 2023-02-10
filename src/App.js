@@ -1,6 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Header from './Header';
+import Footer from './Footer';
+import Card from './Card';
+import Cart from './Cart';
 
 function App() {
   const[products,setProducts]=useState([
@@ -45,7 +50,29 @@ function App() {
     setCartItems([...cartItems]) 
   } 
   return (
-    
+    <>
+    <Header/>
+    <section className="py-5">
+      <div className="container">
+        <div className="row d-flex justify-content-around">
+          <div className="col-lg-8">
+            <div className="row">
+              {
+                products.map(()=>{
+                  return <Card key={index} product={product} addToCart={addToCart} cartItems={cartItems}></Card>
+                })
+              }
+            </div>
+          </div>
+          <div className="col-lg-3">
+            <h3>Cart</h3>
+            <Cart cartItems={cartItems} removeFromCart={removeFromCart}></Cart>
+          </div>
+        </div>
+      </div>
+    </section>
+    <Footer/>
+    </>
   );
 }
 
