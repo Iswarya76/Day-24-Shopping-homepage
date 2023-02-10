@@ -38,11 +38,17 @@ function App() {
       name:'Nokia G31',
       price:14000,
       image:'https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1662435270/Croma%20Assets/Communication/Mobiles/Images/251584_hdcuw4.png/mxw_1440,s_webp,f_auto'
+    },
+    {
+      id:6,
+      name:'Oppo F21 Pro',
+      price:21000,
+      image:'https://d2d22nphq0yz8t.cloudfront.net/88e6cc4b-eaa1-4053-af65-563d88ba8b26/https://media.croma.com/image/upload/v1662436729/Croma%20Assets/Communication/Mobiles/Images/251267_x4lcmx.png/mxw_1440,s_webp,f_auto'
     }
   ])
   const[cartItems,setCartItems]=useState([])
   let addToCart=(product)=>{
-    setCartItems([...cartItems,products])
+    setCartItems([...cartItems,product])
   }
   let removeFromCart=(cartItem)=>{ 
     const indexVal=cartItems.findIndex(obj=>obj.id===cartItem.id); 
@@ -58,7 +64,7 @@ function App() {
           <div className="col-lg-8">
             <div className="row">
               {
-                products.map(()=>{
+                products.map((product,index)=>{
                   return <Card key={index} product={product} addToCart={addToCart} cartItems={cartItems}></Card>
                 })
               }
@@ -75,5 +81,4 @@ function App() {
     </>
   );
 }
-
 export default App;
